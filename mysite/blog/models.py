@@ -23,15 +23,15 @@ class Post(models.Model):
         def __str__(self):
             return self.title
         
-        def save(self, *args, **kwargs):
-        # 确保至少有一个默认的 User 对象存在
-            if not User.objects.exists():
-                User.objects.create_superuser(username='default_user', password='default_password')
-            # 设置默认的 User 对象
-            default_user = User.objects.get(username='default_user')
-            if not self.author:
-                self.author = default_user
-            super().save(*args, **kwargs)
+        # def save(self, *args, **kwargs):
+        # # 确保至少有一个默认的 User 对象存在
+        #     if not User.objects.exists():
+        #         User.objects.create_superuser(username='default_user', password='default_password')
+        #     # 设置默认的 User 对象
+        #     default_user = User.objects.get(username='default_user')
+        #     if not self.author:
+        #         self.author = default_user
+        #     super().save(*args, **kwargs)
 
 
 

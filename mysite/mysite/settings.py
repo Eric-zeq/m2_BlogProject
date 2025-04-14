@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "crispy_forms", #django-crispy-forms
     "blog",  #new app
-    "rest_framework" #rest api
+    "rest_framework" #rest
 ]
 
 MIDDLEWARE = [
@@ -130,7 +131,25 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 REST_FRAMEWORK = {
 # Use Django's standard `django.contrib.auth` permissions,
 # or allow read-only access for unauthenticated users.
-'DEFAULT_PERMISSION_CLASSES': [
-'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-]
+'DEFAULT_PERMISSION_CLASSES': (
+'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+'rest_framework.permissions.IsAuthenticated',
+),
+'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
 }
+# 允许使用的模板包
+CRISPY_ALLOWED_TEMPLATE_PACKS = ("bootstrap4", "bootstrap5")
+# 当前使用的模板包
+CRISPY_TEMPLATE_PACK = 'bootstrap5'  # 或者 "bootstrap5"
+
+#gmail 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'zeq329722842@gmail.com'  # 发件人邮箱
+EMAIL_HOST_PASSWORD = ''  # 发件人邮箱密码或应用专用密码
+DEFAULT_FROM_EMAIL = 'zeq329722842@gmail.com'  # 默认发件人
+

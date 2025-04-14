@@ -32,6 +32,7 @@
             box-shadow: 0 16px 48px #E3E7EB;
             padding-top: 10px;
         }
+        
     </style>
 
         <!-- Navigation -->
@@ -53,10 +54,35 @@
                         <li class="nav-item text-black">
                             <a class="nav-link text-black font-weight-bold" href="#">Contact</a>
                         </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black" href="#">Welcome, {{user.username}}</a>
+                        </li>
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black" href="/logout">Logout</a>
+                        </li>
+                        {% else %}
+
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="/login">Login</a>
+                        </li>
+
+                        {% endif %}
                     </ul>
                 </div>
             </div>
         </nav>
+        <!-- logout messages -->
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                    {{ message }}
+                </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
         {% block content %}
         <!-- Content Goes here -->
         {% endblock content %}
