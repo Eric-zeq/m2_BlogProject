@@ -133,7 +133,7 @@ REST_FRAMEWORK = {
 # or allow read-only access for unauthenticated users.
 'DEFAULT_PERMISSION_CLASSES': (
 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
-'rest_framework.permissions.IsAuthenticated',
+# 'rest_framework.permissions.IsAuthenticated',
 ),
 'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -150,6 +150,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'zeq329722842@gmail.com'  # 发件人邮箱
-EMAIL_HOST_PASSWORD = ''  # 发件人邮箱密码或应用专用密码
+EMAIL_HOST_PASSWORD = 'xkpaxmsicmwuaais'  # 发件人邮箱密码或应用专用密码
 DEFAULT_FROM_EMAIL = 'zeq329722842@gmail.com'  # 默认发件人
 
