@@ -47,7 +47,9 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.cache.UpdateCacheMiddleware",
     "django.middleware.common.CommonMiddleware",
+    "django.middleware.cache.FetchFromCacheMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
@@ -153,3 +155,18 @@ EMAIL_HOST_USER = 'zeq329722842@gmail.com'  # 发件人邮箱
 EMAIL_HOST_PASSWORD = 'xkpaxmsicmwuaais'  # 发件人邮箱密码或应用专用密码
 DEFAULT_FROM_EMAIL = 'zeq329722842@gmail.com'  # 默认发件人
 
+#memery cache
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',  # 缓存的唯一标识
+    }
+}
+
+#database cache
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'post_cache',  # 缓存表的名称
+    }
+}

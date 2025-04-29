@@ -3,11 +3,14 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 card mb-4  mt-3 left  top">
+      {% load cache %}
+      {% cache 300 my_template_cache %} 
       <div class="card-body">
         <h1>{% block title %} {{ object.title }} {% endblock title %}</h1>
         <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
         <p class="card-text ">{{ object.content | safe }}</p>
       </div>
+      {% endcache %}
     </div>
     {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
   </div>
